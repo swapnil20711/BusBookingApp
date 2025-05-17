@@ -72,6 +72,21 @@ def enableProguardInReleaseBuilds = false
  */
 def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
 
+def localPropsFile = rootProject.file("local.properties")
+def localProperties = new Properties()
+
+if (localPropsFile.exists()) {
+    localPropsFile.withInputStream { stream ->
+        localProperties.load(stream)
+    }
+}
+
+// Access properties from local.properties
+def MYAPP_UPLOAD_STORE_FILE = localProperties.getProperty('MYAPP_UPLOAD_STORE_FILE')
+def MYAPP_UPLOAD_STORE_PASSWORD = localProperties.getProperty('MYAPP_UPLOAD_STORE_PASSWORD')
+def MYAPP_UPLOAD_KEY_ALIAS = localProperties.getProperty('MYAPP_UPLOAD_KEY_ALIAS')
+def MYAPP_UPLOAD_KEY_PASSWORD = localProperties.getProperty('MYAPP_UPLOAD_KEY_PASSWORD')
+
 android {
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -87,10 +102,12 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            if (MYAPP_UPLOAD_STORE_FILE != null) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
         }
     }
     buildTypes {
