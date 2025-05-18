@@ -1,11 +1,19 @@
 import './global.css';
-import { View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import React from 'react';
+import Navigation from './src/navigation/Navigation';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './src/service/queryClient';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 const App = () => {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <QueryClientProvider client={queryClient}>
+          <Navigation />
+        </QueryClientProvider>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 

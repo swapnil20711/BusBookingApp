@@ -1,0 +1,30 @@
+{
+    "code": "IN",
+    "dial_code": "+91",
+    "flag": "🇮🇳",
+    "name": {
+        "ar": "الهند",
+        "bg": "Индия",
+        "by": "Індыя",
+        "cn": "印度",
+        "cz": "Indie",
+        "da": "Indien",
+        "de": "Indien",
+        "ee": "India",
+        "el": "Ινδία",
+        "en": "India",
+        "es": "India",
+        "fr": "Inde",
+        "he": "הוֹדוּ",
+        "it": "India",
+        "jp": "インド",
+        "nl": "India",
+        "pl": "Indie",
+        "pt": "Índia",
+        "ro": "India",
+        "ru": "Индия",
+        "tr": "Hindistan",
+        "ua": "Індія",
+        "zh": "印度"
+    }
+}
