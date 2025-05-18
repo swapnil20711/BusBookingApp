@@ -7,9 +7,6 @@ export const loginWithGoogle = async (idToken: string) => {
     const { data } = await apiClient.post('/user/login', { id_token: idToken });
     setString('accessToken', data?.accessToken);
     setString('refreshAccessToken', data?.refreshAccessToken);
-    console.log('====================================');
-    console.log(data);
-    console.log('====================================');
     return data?.user;
 };
 
